@@ -2,7 +2,6 @@ const API_URL_CRYPTO = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoi
 const API_URL_FOREX = "https://open.er-api.com/v6/latest/USD";
 const API_URL_METALS = "https://api.metalpriceapi.com/v1/latest?api_key=af8c6567ee705438f280153bb058c39e&base=USD&currencies=EUR,XAU,XAG";
 
-
 let currencyData = [
     // 32 Cryptocurrencies
     { name: 'USD Coin', code: 'USDC', icon: 'tokens/USDC.svg', price: 1 },

@@ -10,6 +10,19 @@
     --border-color: #333;
 }
 
+@keyframes fadeIn {
+    to {
+        opacity: .4;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 body, html {
     height: 100%;
     display: flex;
@@ -22,10 +35,66 @@ body, html {
     width: 100%;
 }
 
+.brand {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    gap: 8px;
+    top: 12px;
+    left: 16px;
+    color: white;
+    user-select: none;
+    opacity: 0.2;
+    animation: fadeIn 2s ease-in-out 0s forwards;
+}
+
+.brand-logo {
+    width: 20px;
+}
+
+.brand-name {
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.guide {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: var(--text-color);
+    font-weight: 200;
+    opacity: 1;
+    animation: fadeOut 9s ease-in-out 0s forwards;
+    user-select: none;
+}
+
 .header {
     text-align: center;
     margin: 100px;
     user-select: none;
+}
+
+.title-container {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+}
+
+.title {
+    font-size: 4em;
+    color: var(--primary-color);
+}
+
+.title-logo {
+    width: 52px;
+}
+
+.sub-title {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    font-weight: 200;
+    margin-top: 10px;
 }
 
 .form {
@@ -48,35 +117,13 @@ body, html {
 
 .form-section-1 {
     align-items: center;
+    justify-content: center;
 }
 
 .form-section-2 {
     justify-content: space-between;
     font-size: 2rem;
     padding: 40px 10px;
-}
-
-.title {
-    font-size: 4em;
-    color: var(--primary-color);
-}
-
-.guide {
-    position: absolute;
-    top: 10px;
-    right: 8px;
-    font-size: 0.8rem;
-    color: var(--text-color);
-    font-weight: 200;
-    opacity: 1;
-    animation: fadeOut 9s ease-in-out 0s forwards;
-}
-
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        visibility: hidden;
-    }
 }
 
 .rate-display, .rate-period {
@@ -187,7 +234,7 @@ body, html {
     list-style: none;
     box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.4);
     width: 100%;
-    max-height: 320px;
+    max-height: 300px;
     overflow-y: scroll;
 }
 

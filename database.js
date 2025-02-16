@@ -56,8 +56,8 @@ let currencyData = [
     { name: 'Swiss Franc', code: 'CHF', icon: 'tokens/CHF.svg', price: 0.89 },
     { name: 'Vietnam Dong', code: 'VND', icon: 'tokens/VND.svg', price: 25000 },
     // Commodity
-    { name: 'Silver', code: 'SILVER', icon: 'tokens/SILVER.svg', price: 35 },
-    { name: 'Gold', code: 'GOLD', icon: 'tokens/GOLD.svg', price: 2900 }
+    { name: 'ounce Silver', code: 'SILVER', icon: 'tokens/SILVER.svg', price: 35 },
+    { name: 'ounce Gold', code: 'GOLD', icon: 'tokens/GOLD.svg', price: 2900 }
 ];
 
 function addOrderId(array) {

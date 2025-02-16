@@ -38,12 +38,15 @@ function handleCurrencyDropdown(dropdownCurrency, dropdown) {
         displayCurrency(selectedCurrencies);
         updateRateDisplay(selectedCurrencies);
         recalculateExchange(selectedCurrencies);
+
+        // Reassign synchronization with updated currencies
+        synchronizeInputs(input1, input2, selectedCurrencies.currency1, selectedCurrencies.currency2);
+        synchronizeInputs(input2, input1, selectedCurrencies.currency2, selectedCurrencies.currency1);
     });
 }
 
 handleCurrencyDropdown(dropdownCurrency1, dropdown1)
 handleCurrencyDropdown(dropdownCurrency2, dropdown2)
-
 
 function dropdownBtnClick(dropdownBtn, dropdown, otherDropdown = null) {
     dropdownBtn.addEventListener('click', e => {
@@ -57,11 +60,6 @@ function dropdownBtnClick(dropdownBtn, dropdown, otherDropdown = null) {
 
 dropdownBtnClick(dropdownBtn1, dropdown1, dropdown2);
 dropdownBtnClick(dropdownBtn2, dropdown2, dropdown1);
-
-document.addEventListener('click', e => {
-    dropdown1.style.display = 'none'
-    dropdown2.style.display = 'none'
-})
 
 // Reverse currency
 const input1 = document.getElementById('input-1');
@@ -143,6 +141,10 @@ function synchronizeInputs(typingInput, targetInput, typingCurrency, targetCurre
     typingInput.addEventListener('input', () => {
         let value = parseFloat(typingInput.value);
 
+        if (document.activeElement !== typingInput) {
+            return; // Only update when user is actively typing
+        }
+
         if (typingInput.value === '' || value < 0) {
             targetInput.value = '';
             return;
@@ -153,14 +155,11 @@ function synchronizeInputs(typingInput, targetInput, typingCurrency, targetCurre
             targetInput.value = (value * rate).toFixed(2);
         }
 
-        // Ensure no decimal when the value is 0
         if (value === 0) {
             targetInput.value = 0;
         }
-        recalculateExchange(selectedCurrencies);
     });
 }
-
 
 // Apply synchronization to both inputs
 synchronizeInputs(input1, input2, selectedCurrencies.currency1, selectedCurrencies.currency2);
@@ -183,3 +182,8 @@ document.addEventListener('keydown', (e) => {
             break;
     }
 });
+
+document.addEventListener('click', e => {
+    dropdown1.style.display = 'none'
+    dropdown2.style.display = 'none'
+})
